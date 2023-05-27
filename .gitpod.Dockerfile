@@ -3,7 +3,7 @@ FROM python:latest
 USER root
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
-RUN echo 'export PATH="/home/gitpod/.local/bin:$PATH"' >> ~/.bashrc
+RUN echo 'export PATH="/root/.local/bin:$PATH"' >> ~/.bashrc
 RUN source ~/.bashrc
 
 # 安裝 Docker 的相依套件
