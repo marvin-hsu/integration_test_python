@@ -1,4 +1,4 @@
-FROM python:latest AS builder
+FROM python:latest
 
 # 安裝 Poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
