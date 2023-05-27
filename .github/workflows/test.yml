@@ -26,6 +26,7 @@ jobs:
 
       - name: Run tests and generate JUnit report
         run: |
+          poetry install
           poetry run pytest --junitxml=junit-report.xml
 
       - name: Upload report artifact
