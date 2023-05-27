@@ -1,9 +1,2 @@
 image:
   file: .gitpod.Dockerfile
-
-# tasks:
-#   - name: Install Poetry
-#     command: |
-#       curl -sSL https://install.python-poetry.org | python3 -
-#       echo 'export PATH="/home/gitpod/.local/bin:$PATH"' >> ~/.bashrc
-#       source ~/.bashrc
