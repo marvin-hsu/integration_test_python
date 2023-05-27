@@ -35,7 +35,6 @@ jobs:
       - name: Run tests and generate JUnit report
         run: |
           pytest --junitxml=junit-report.xml
-          mv junit-report.xml ${{ github.workspace }}
 
       - name: Upload report artifact
         uses: actions/upload-artifact@v2
