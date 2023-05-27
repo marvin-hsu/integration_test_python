@@ -1,2 +1,6 @@
-image:
-  file: .gitpod.Dockerfile
+image: python:latest
+
+tasks:
+  - name: Install Poetry
+    command: |
+      curl -sSL https://install.python-poetry.org | python3 -
