@@ -18,7 +18,7 @@ jobs:
       run: docker build -t myapp .
 
     - name: Run tests in Docker container
-      run: docker run --name myapp-container myapp /root/.local/bin/poetry run pytest --continue-on-collection-errors --html=/app/pytest-report.html --self-contained-html
+      run: docker run --name myapp-container myapp poetry run pytest --continue-on-collection-errors --html=/app/pytest-report.html --self-contained-html
 
     - name: Copy report from container to host
       run: docker cp myapp-container:/app/pytest-report.html .
