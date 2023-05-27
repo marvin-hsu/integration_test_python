@@ -4,7 +4,7 @@ FROM python:latest
 WORKDIR /app
 
 # 安裝 Poetry
-RUN pip install poetry
+RUN pip install poetry==1.5.0
 
 # 複製程式碼到容器中
 COPY . /app
