@@ -4,7 +4,6 @@ USER root
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN echo 'export PATH="/root/.local/bin:$PATH"' >> ~/.bashrc
-RUN source ~/.bashrc
 
 # 安裝 Docker 的相依套件
 RUN apt-get update && apt-get install -y \
