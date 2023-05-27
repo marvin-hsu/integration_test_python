@@ -27,7 +27,7 @@ jobs:
       - name: Run tests and generate test report
         run: |
           poetry install
-          poetry run pytest --html=pytest-report.html --self-contained-html
+          poetry run pytest --continue-on-collection-errors --html=pytest-report.html --self-contained-html
 
       - name: Upload report artifact
         uses: actions/upload-artifact@v3
