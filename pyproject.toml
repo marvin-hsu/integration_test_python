@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "integration test use pytest"
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "integration_test_python"}]
+packages = [{include = "tests"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
