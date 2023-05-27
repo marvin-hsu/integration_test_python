@@ -11,27 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
+    - name: Set up Docker
+      uses: docker/setup-docker@v1
 
-      - name: Set up Poetry
-        uses: abatilo/actions-poetry@v2
-        with:
-          poetry-version: 1.5.0
+    - name: Build Docker image
+      run: docker build -t myapp .
 
-      - name: Run tests and generate test report
-        run: |
-          poetry install
-          poetry run pytest --continue-on-collection-errors --html=pytest-report.html --self-contained-html
+    - name: Run tests in Docker container
+      run: docker run --name myapp-container myapp poetry run pytest --continue-on-collection-errors --html=/app/pytest-report.html --self-contained-html
 
-      - name: Upload report artifact
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Pytest HTML Report
-          path: pytest-report.html
+    - name: Copy report from container to host
+      run: docker cp myapp-container:/app/pytest-report.html .
+
+    - name: Upload report artifact
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: Pytest HTML Report
+        path: pytest-report.html
