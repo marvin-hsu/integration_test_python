@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "integration-test-python"
+version = "0.1.0"
+description = "integration test use pytest"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "integration_test_python"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.3.1"
+pytest-xdist = "^3.3.1"
+requests = "^2.31.0"
+dbutils = "^3.0.3"
+toml = "^0.10.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,3 @@
+*.lock
+__pychache__/
+.pytest_cache/
