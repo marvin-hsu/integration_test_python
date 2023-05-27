@@ -1,13 +1,13 @@
 FROM python:latest
 
-# 安裝 Poetry
-RUN curl -sSL https://install.python-poetry.org | python3 -
-
 # 設定工作目錄
 WORKDIR /app
 
 # 複製程式碼到容器中
 COPY . /app
+
+# 安裝 Poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
 
 # 安裝專案依賴項
 RUN /root/.local/bin/poetry install --no-dev
