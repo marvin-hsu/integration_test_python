@@ -27,10 +27,13 @@ jobs:
       - name: Run tests and generate JUnit report
         run: |
           poetry install
-          poetry run pytest --junitxml=junit-report.xml
+          poetry run pytest --html=pytest-report.html
+          # poetry run pytest --junitxml=junit-report.xml
 
       - name: Upload report artifact
         uses: actions/upload-artifact@v3
         with:
-          name: JUnit Test Report
-          path: junit-report.xml
+          name: Pytest HTML Report
+          path: pytest-report.html
+          # name: JUnit Test Report
+          # path: junit-report.xml
