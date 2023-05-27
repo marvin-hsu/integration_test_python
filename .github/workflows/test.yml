@@ -27,8 +27,6 @@ jobs:
       - name: Run tests and generate JUnit report
         run: |
           poetry install
-          current_dir=$PWD
-          echo "當前目錄：$current_dir"
           poetry run pytest --junitxml=junit-report.xml
 
       - name: Upload report artifact
