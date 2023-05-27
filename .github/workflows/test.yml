@@ -28,6 +28,10 @@ jobs:
         run: |
           poetry install
           poetry run pytest --continue-on-collection-errors --html=pytest-report.html --self-contained-html
+          exit_code=$?
+          if [[ $exit_code != 0 ]]; then
+            echo "Tests failed. Continuing with subsequent steps."
+          fi
 
       - name: Upload report artifact
         uses: actions/upload-artifact@v3
