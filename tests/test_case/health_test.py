@@ -1,2 +1,6 @@
+import logging
+
+
 def test_health():
-    assert True
+    print("Hello World")
+    assert False
