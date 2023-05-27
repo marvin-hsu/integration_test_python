@@ -1,0 +1,42 @@
+name: Test App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Test App
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Set up Poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: 1.5.0
+
+      - name: Export requirements.txt
+        run: poetry export --format requirements.txt --output requirements.txt
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests and generate JUnit report
+        run: |
+          pytest --junitxml=junit-report.xml
+          mv junit-report.xml ${{ github.workspace }}
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: JUnit Test Report
+          path: junit-report.xml
