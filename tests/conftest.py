@@ -1,7 +1,8 @@
-import subprocess
+import logging
 
 import pytest
 
+from tests.scripts.local import start_local_project
 from tests.utils.config_reader import Config
 
 
@@ -17,18 +18,11 @@ def config(request):
 
 @pytest.fixture(scope="session", autouse=True)
 def project(request):
+    logging.basicConfig(level=logging.INFO, format='- %(levelname)s - %(message)s')
+
     env = request.config.getoption("--env")
     if env == "local":
-
-        # 在測試開始前啟動src中專案
-        cmd = ["python", "-u", "-m", "src.demo"]
-        process = subprocess.Popen(cmd, stdout=subprocess.PIPE, universal_newlines=True)
-
-        # 等待 process 打印 "Hello World!
-        while True:
-            line = process.stdout.readline()
-            if line.strip() == "Hello World!":
-                break
+        start_local_project()
 
     yield
 
